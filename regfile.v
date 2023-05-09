@@ -52,8 +52,7 @@ module regfile_test;
         readdata2
     );
 
-    initial
-    begin
+    initial begin
         regwrite = 1'b0;
         readreg1 = 5'd2;
         readreg2 = 5'd11;

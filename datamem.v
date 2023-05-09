@@ -36,3 +36,44 @@ module datamem (
     end
 
 endmodule
+
+module datamem_test;
+
+    reg memread, memwrite;
+    reg [31:0] writedata, addr;
+    wire [31:0] readdata;
+    
+    datamem datamemory(
+    memread,
+    memwrite,
+    addr,
+    writedata,
+    readdata 
+    );
+
+    initial begin
+        memread = 1'b0;
+        memwrite = 1'b0;
+        #10;
+
+        addr = 32'd4;
+        writedata = 32'd27;
+        memwrite = 1'b1;
+        #10 memwrite = 1'b0;
+        
+        #10;
+        addr = 32'd0;
+        writedata = 32'd17;
+        memwrite = 1'b1;
+        #10 memwrite = 1'b0;
+
+        #10;
+        addr = 32'd0;
+        memread = 1'b1;
+
+        #10;
+        addr = 32'd4;
+    end
+   
+
+endmodule
