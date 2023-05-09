@@ -42,7 +42,7 @@ module regfile_test;
     reg [31:0] writedata;
     wire [31:0] readdata1, readdata2;
 
-    regfile u0(
+    regfile registerfile(
         readreg1,
         readreg2,
         writereg,
@@ -68,6 +68,8 @@ module regfile_test;
         #30;
 
         regwrite = 1'b0;
+        readreg2 = 5'd0;
+        #30;
         $stop;
 
     end
