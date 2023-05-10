@@ -17,8 +17,9 @@ module regfile (
 
     integer i;
 
+    // Test
     initial begin
-        for (i = 0; i < 32; i = i + 1) begin // for testing
+        for (i = 0; i < 32; i = i + 1) begin
             file_reg[i] = i;
         end
     end
