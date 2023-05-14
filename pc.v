@@ -7,7 +7,7 @@ module pc (
 
     input clk, rst;
     input [31:0] pcin;
-    output reg [31:0] pcout;
+    output reg [31:0] pcout = 32'd0;
 
     always @(posedge clk)
     begin
