@@ -1,3 +1,5 @@
+`timescale 1ns/1ns
+
 module regfile (
     readreg1,
     readreg2,
@@ -17,7 +19,8 @@ module regfile (
 
     integer i;
 
-    // Test
+    // Test: each reg contains
+    // it's number -> e.g: $14 = 14
     initial begin
         for (i = 0; i < 32; i = i + 1) begin
             file_reg[i] = i;
@@ -27,12 +30,16 @@ module regfile (
 
     always @(readreg1 or readreg2 or writereg
     or writedata or regwrite) begin
-        if (regwrite == 1'b1 && writereg != 5'd0) 
+        if ((regwrite == 1'b1 && writereg != 5'd0) 
+        && (readreg1 != 5'bxxxxx || readreg2 != 5'bxxxxx
+         || writereg != 5'bxxxxx || regwrite != 5'bxxxxx))  
             file_reg[writereg] = writedata;
     end
 
-    assign readdata1 = (readreg1 == 5'd0) ? 32'd0: file_reg[readreg1];
-    assign readdata2 = (readreg2 == 5'd0) ? 32'd0: file_reg[readreg2];
+    assign readdata1 =
+        (readreg1 == 5'd0) ? 32'd0: file_reg[readreg1];
+    assign readdata2 = 
+        (readreg2 == 5'd0) ? 32'd0: file_reg[readreg2];
 
 endmodule
 

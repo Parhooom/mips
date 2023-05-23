@@ -1,4 +1,5 @@
 `include "opfunc.v"
+`timescale 1ns/1ns
 
 module controller (
     clk,
@@ -20,9 +21,20 @@ module controller (
     output reg regdst, regwrite,
     alusrc, memread, memwrite,
     memtoreg, branch, jump;
-    output reg [2:0] aluop;
+    output reg [2:0] aluop = `aluop_add;
 
-    always @(posedge clk) begin
+    initial begin
+        regdst = 1'b0;
+        regwrite = 1'b0;
+        alusrc = 1'b0;
+        memread = 1'b0;
+        memwrite = 1'b0;
+        memtoreg = 1'b0;
+        branch = 1'b0;
+        jump = 1'b0;
+    end
+
+    always @(posedge clk or func or opcode) begin
         case (opcode)
             `opcode_rtype: begin
                 case (func)

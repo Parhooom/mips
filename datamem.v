@@ -1,3 +1,5 @@
+`timescale 1ns/1ns
+
 module datamem (
     memread,
     memwrite,
@@ -22,6 +24,7 @@ module datamem (
     end
 
     always @(memread or memwrite or addr or writedata) begin
+        
         if ((addr & 32'b11) == 0 && addr < 256) begin
             if (memwrite == 1'b1) begin
                 {mem_data[addr], mem_data[addr + 1], mem_data[addr + 2], mem_data[addr + 3]} = writedata;
@@ -30,8 +33,6 @@ module datamem (
             end  
         end else begin
             readdata = 32'd0;
-            $display("error in data mem.");
-            $stop;
         end
     end
 
