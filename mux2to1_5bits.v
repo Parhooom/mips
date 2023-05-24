@@ -9,10 +9,6 @@ module mux2to1_5bit (
     input sel;
     output [4:0] out;
 
-    // always @(i0 or i1 or sel) begin
-    //     if (sel == 1'b1) out = i1;
-    //     else out = i0;
-    // end
 
     assign out = (sel == 1'b1) ? i1: i0;
 

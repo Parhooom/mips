@@ -46,74 +46,74 @@ module controller (
                     default:   aluop = `aluop_add;
                 endcase
 
-                regdst =    1'b1;
-                regwrite =  1'b1;
-                alusrc =    1'b0;
-                memread =   1'b0;
-                memwrite =  1'b0;
-                memtoreg =  1'b0;
-                branch =    1'b0;
-                jump =      1'b0;
+                regdst <=    1'b1;
+                regwrite <=  1'b1;
+                alusrc <=    1'b0;
+                memread <=   1'b0;
+                memwrite <=  1'b0;
+                memtoreg <=  1'b0;
+                branch <=    1'b0;
+                jump <=      1'b0;
             
             end
             `opcode_lw: begin
-                regdst =    1'b0;
-                regwrite =  1'b1;
-                alusrc =    1'b1;
-                memread =   1'b1;
-                memwrite =  1'b0;
-                memtoreg =  1'b1;
-                branch =    1'b0;
-                jump =      1'b0;
-                aluop =     `aluop_add;
+                regdst <=    1'b0;
+                regwrite <=  1'b1;
+                alusrc <=    1'b1;
+                memread <=   1'b1;
+                memwrite <=  1'b0;
+                memtoreg <=  1'b1;
+                branch <=    1'b0;
+                jump <=      1'b0;
+                aluop <=     `aluop_add;
 
             end
             `opcode_sw: begin
-                regdst =    1'b0;
-                regwrite =  1'b0;
-                alusrc =    1'b1;
-                memread =   1'b0;
-                memwrite =  1'b1;
-                memtoreg =  1'b0;
-                branch =    1'b0;
-                jump =      1'b0;
-                aluop =     `aluop_add;
+                regdst <=    1'b0;
+                regwrite <=  1'b0;
+                alusrc <=    1'b1;
+                memread <=   1'b0;
+                memwrite <=  1'b1;
+                memtoreg <=  1'b0;
+                branch <=    1'b0;
+                jump <=      1'b0;
+                aluop <=     `aluop_add;
 
             end
             `opcode_beq: begin
-                regdst =    1'b0;
-                regwrite =  1'b0;
-                alusrc =    1'b0;
-                memread =   1'b0;
-                memwrite =  1'b0;
-                memtoreg =  1'b0;
-                branch =    1'b1;
-                jump =      1'b0;
-                aluop =     `aluop_sub;
+                regdst <=    1'b0;
+                regwrite <=  1'b0;
+                alusrc <=    1'b0;
+                memread <=   1'b0;
+                memwrite <=  1'b0;
+                memtoreg <=  1'b0;
+                branch <=    1'b1;
+                jump <=      1'b0;
+                aluop <=     `aluop_sub;
 
             end
             `opcode_j: begin
-                regdst =    1'b0;
-                regwrite =  1'b0;
-                alusrc =    1'b0;
-                memread =   1'b0;
-                memwrite =  1'b0;
-                memtoreg =  1'b0;
-                branch =    1'b0;
-                jump =      1'b1;
-                aluop =     `aluop_add; // dont care
+                regdst <=    1'b0;
+                regwrite <=  1'b0;
+                alusrc <=    1'b0;
+                memread <=   1'b0;
+                memwrite <=  1'b0;
+                memtoreg <=  1'b0;
+                branch <=    1'b0;
+                jump <=      1'b1;
+                aluop <=     `aluop_add; // dont care
 
             end
             default: begin 
-                regdst =    1'b0;
-                regwrite =  1'b0;
-                alusrc =    1'b0;
-                memread =   1'b0;
-                memwrite =  1'b0;
-                memtoreg =  1'b0;
-                branch =    1'b0;
-                jump =      1'b0;
-                aluop =     `aluop_add; // dont care 
+                regdst <=    1'b0;
+                regwrite <=  1'b0;
+                alusrc <=    1'b0;
+                memread <=   1'b0;
+                memwrite <=  1'b0;
+                memtoreg <=  1'b0;
+                branch <=    1'b0;
+                jump <=      1'b0;
+                aluop <=     `aluop_add; // dont care 
             end
         endcase
     end

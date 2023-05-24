@@ -147,7 +147,6 @@ module mips_cpu_test;
 
     always begin
         #10 clk = ~clk;
-        $display("haha");
     end 
 
 endmodule

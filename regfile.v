@@ -30,9 +30,7 @@ module regfile (
 
     always @(readreg1 or readreg2 or writereg
     or writedata or regwrite) begin
-        if ((regwrite == 1'b1 && writereg != 5'd0) 
-        && (readreg1 != 5'bxxxxx || readreg2 != 5'bxxxxx
-         || writereg != 5'bxxxxx || regwrite != 5'bxxxxx))  
+        if (regwrite == 1'b1 && writereg != 5'd0) 
             file_reg[writereg] = writedata;
     end
 
