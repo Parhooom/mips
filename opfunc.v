@@ -10,6 +10,7 @@
 `define opcode_sw 6'h2B
 `define opcode_beq 6'h04
 `define opcode_j 6'h02
+`define opcode_addi 6'h08
 
 `define aluop_add 3'b010
 `define aluop_sub 3'b110

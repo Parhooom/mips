@@ -24,14 +24,14 @@ module controller (
     output reg [2:0] aluop = `aluop_add;
 
     initial begin
-        regdst = 1'b0;
-        regwrite = 1'b0;
-        alusrc = 1'b0;
-        memread = 1'b0;
-        memwrite = 1'b0;
-        memtoreg = 1'b0;
-        branch = 1'b0;
-        jump = 1'b0;
+        regdst <= 1'b0;
+        regwrite <= 1'b0;
+        alusrc <= 1'b0;
+        memread <= 1'b0;
+        memwrite <= 1'b0;
+        memtoreg <= 1'b0;
+        branch <= 1'b0;
+        jump <= 1'b0;
     end
 
     always @(posedge clk or func or opcode) begin
@@ -103,6 +103,17 @@ module controller (
                 jump <=      1'b1;
                 aluop <=     `aluop_add; // dont care
 
+            end
+            `opcode_addi: begin
+                regdst <=    1'b0;
+                regwrite <=  1'b1;
+                alusrc <=    1'b1;
+                memread <=   1'b0;
+                memwrite <=  1'b0;
+                memtoreg <=  1'b0;
+                branch <=    1'b0;
+                jump <=      1'b0;
+                aluop <=     `aluop_add;
             end
             default: begin 
                 regdst <=    1'b0;
