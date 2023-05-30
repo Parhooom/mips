@@ -1,4 +1,5 @@
 `include "opfunc.v"
+`timescale 1ns/1ns
 
 module alu (
     A,
@@ -10,7 +11,7 @@ module alu (
     
     input signed [31:0] A, B;
     input [2:0] aluop;
-    output reg [31:0] result;
+    output reg signed [31:0] result;
     output reg zero_flag;
 
     always @(A or B or aluop) begin

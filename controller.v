@@ -34,7 +34,7 @@ module controller (
         jump <= 1'b0;
     end
 
-    always @(posedge clk or func or opcode) begin
+    always @(posedge clk) begin
         case (opcode)
             `opcode_rtype: begin
                 case (func)

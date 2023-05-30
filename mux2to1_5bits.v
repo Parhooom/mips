@@ -1,3 +1,5 @@
+`timescale 1ns/1ns
+
 module mux2to1_5bit (
     i0,
     i1,
