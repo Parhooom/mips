@@ -115,7 +115,7 @@ module mips_cpu (
     wire [31:0] pcplusfour;
     assign pcplusfour = pcout + 32'd4;
     wire [31:0] branchpc;
-    assign branchpc = (readdata2 << 2) + pcplusfour;
+    assign branchpc = (extended_data << 2) + pcplusfour;
     
 
     wire [31:0] mux_branch_output;

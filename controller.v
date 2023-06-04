@@ -34,9 +34,10 @@ module controller (
         jump <= 1'b0;
     end
 
-    always @(posedge clk) begin
+    always @(func or opcode) begin
         case (opcode)
             `opcode_rtype: begin
+                $display("time: %t, func: %d, opcode: %d", $time, func, opcode);
                 case (func)
                     `func_add: aluop = `aluop_add;
                     `func_sub: aluop = `aluop_sub;

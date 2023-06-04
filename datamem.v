@@ -18,7 +18,10 @@ module datamem (
     
     initial
     begin
-        for (i = 0; i < 256; i = i + 1) begin
+        {mem_data[0], mem_data[1], mem_data[2], mem_data[3]}
+            = 32'd6;
+
+        for (i = 4; i < 256; i = i + 1) begin
             mem_data[i] = 8'd0;    
         end
     end

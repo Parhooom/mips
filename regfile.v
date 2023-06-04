@@ -13,7 +13,7 @@ module regfile (
     input regwrite;
     input [4:0] readreg1, readreg2, writereg;
     input [31:0] writedata;
-    output [31:0] readdata1, readdata2;
+    output reg [31:0] readdata1, readdata2;
 
     reg [31:0] file_reg [0:31];
 
@@ -30,14 +30,15 @@ module regfile (
 
     always @(readreg1 or readreg2 or writereg
     or writedata or regwrite) begin
-        if (regwrite == 1'b1 && writereg != 5'd0) 
+        readdata1 <= file_reg[readreg1];
+        readdata2 <= file_reg[readreg2];
+        // $display("reg1: %d, reg2: %d, data1: %d, data2: %d",
+        // readreg1, readreg2, readdata1, readdata2);
+        #1;
+        if (regwrite == 1'b1 && writereg != 5'd0) begin
             file_reg[writereg] = writedata;
+        end
     end
-
-    assign readdata1 =
-        (readreg1 == 5'd0) ? 32'd0: file_reg[readreg1];
-    assign readdata2 = 
-        (readreg2 == 5'd0) ? 32'd0: file_reg[readreg2];
 
 endmodule
 

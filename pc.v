@@ -17,6 +17,10 @@ module pc (
             pcout = 32'd0;
         else
             pcout = pcin;
+
+        if (pcout == 32'd32) begin
+            $display("time: %t", $time);
+        end
     end
 
 endmodule
